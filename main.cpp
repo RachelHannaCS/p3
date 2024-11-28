@@ -26,38 +26,25 @@ int main () {
 	getline(fileIn, header);
 	fileOut << "Student               T1     T2     T3  Final   Drop  Total  SID     Grade" << endl;
 	// record detail
+	
+	// footer 
+//	fileOut << "Average " << fixed << setprecision(2) << ... << endl;
     
-    // menu 
-
-	// switch statement
-	switch(choice) {
-	    int choice;
-	case 1:
-		// enter name of output file
-		break;
-	case 2:
-		// sort by name (ascending A->Z)
-		break;
-	case 3:
-		// sort by student ID (ascending)
-		break;
-	case 4:
-		// output to screen
-		break;
-	case 5:
-		// output to file
-		break;
-	case 6:
-		// quit
-		break;
-	default:
-		cout << "Enter menu choice: ";
-	    cin >> choice;
-		break;
-	}
-	while (choice < 6);
+    //menu 
+	cout << "   ========= Sort Menu ==========" << endl;
+	cout << "1. Enter the name of the input file" << endl;
+	cout << "2. Sort by name (ascending, A -> Z)" << endl;
+	cout << "3. Sort by Student ID (ascending)" << endl;
+	cout << "4. Output to screen" << endl;
+	cout << "5. Output to file" << endl;
+	cout << "6. Quit" << endl;
+	cout << "==========" << endl;
+	cout << "Enter menu choice: ";
+	cin >> choice;
 	
     return 0;
 }
+
+
 
 
