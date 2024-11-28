@@ -4,11 +4,11 @@ using namespace std;
 // prototypes
 void dropTest(studType students[], int numStud);
 void getGrade(int test1, int test2, int test3, int final);
-void outputFile(studType students[], int numStud, ofstream& outfile);
+void outputFile(studType students[], int numStud, ofstream& fileOut);
 void outputScreen(studType students[], int numStud); // friend
 void sortName(studType students[], int numStud);
 void sortID(studType students[], int numStud);
-void menu(studType students[], int numStud);
+void menu(ofstream& outFile, studType students[], int numStud);
 
 // dropTest() function
 void dropTest(studType students[], int numStud) {
@@ -42,6 +42,21 @@ void dropTest(studType students[], int numStud) {
 void getGrade(studType students[], int numStud) {
 	// return letter grade based on 300 pts
 }
+
+// outputFile() function 
+void outputFile(studType students[], int numStud, ofstream& fileOut) {
+    for (int i = 0; i < numStud; i++) {
+        fileOut << left << setw(10) << students[i].Name 
+                << left << setw(10) << students[i].Test1
+                << left << setw(10) << students[i].Test2 
+                << left << setw(10) << students[i].Test3 
+                << left << setw(10) << students[i].Final;
+            //  << left << setw(10) << DROP
+            //  << left << setw(10) << students[i].Total 
+            //  << left << setw(10) << students[i].SID
+            //  << left << setw(10) << GETGRADE
+    }
+}
 // outputScreen() function
 void outputScreen(studType students[], int numStud) {
 	// footer (calculate overall average each column + average + # stud)
@@ -68,14 +83,37 @@ void sortID(studType students[], int numStud) {
     }
 }
 // menu() function
-void menu(studType students[], int numStud) {
-	cout << "========= Sort Menu ===========" << endl;
-	cout << "1. Enter the name of the input file" << endl;
-	cout << "2. Sort by name (ascending, A -> Z)" << endl;
-	cout << "3. Sort by Student ID (ascending)" << endl;
-	cout << "4. Output to screen" << endl;
-	cout << "5. Output to file" << endl;
-	cout << "6. Quit" << endl;
-	cout << "==========" << endl;
+void menu(ofstream& outFile, studType students[], int numStud) {
+    int choice;
+	// switch statement
+while (true) {
+	switch(choice) {
+	case 1:
+		// enter name of output file
+		break;
+	case 2:
+		// sort by name (ascending A->Z)
+		sortName(students, numStud);
+		break;
+	case 3:
+		// sort by student ID (ascending)
+		sortID(students, numStud);
+		break;
+	case 4:
+		// output to screen
+		break;
+	case 5:
+		// output to file
+		break;
+	case 6:
+		// quit
+		break;
+	default:
+		cout << "Please enter menu choice: ";
+	    cin >> choice;
+	    break;
+	}
+
 }
 
+}
