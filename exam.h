@@ -26,11 +26,20 @@ class studType {
  // create void printInfo
  void printInfo();
  
+  // set and get studentID 
+void setStudentID(int SID) {
+    studentID = SID;
+}
+string getStudentID() {
+    return studentID;
+}
+
  // SID protected class 
   protected:
   string studentID;
+  
 };
-
+// sub classes 
 class cs115: public studType {};
 class cs120 :public studType{};
 #endif
