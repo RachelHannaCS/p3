@@ -8,7 +8,7 @@ void outputFile(studType students[], int numStud, ofstream& fileOut);
 void outputScreen(studType students[], int numStud); // friend
 void sortName(studType students[], int numStud);
 void sortID(studType students[], int numStud);
-void menu(ofstream& outFile, studType students[], int numStud);
+void menu(ofstream& fileOut, studType students[], int numStud);
 
 // dropTest() function
 int studType::dropTest(int test1, int test2, int test3) {
@@ -87,7 +87,7 @@ void sortName(studType students[], int numStud) {
 // sortID() function
 void sortID(studType students[], int numStud) {
     for (int i = 0; i < numStud - 1; i++) {
-        for (int j = 0; j < numStud - j - 1; j++) {
+        for (int j = 0; j < numStud - i - 1; j++) {
             if (students[j].getStudentID() > students[i + 1].getStudentID()) {
                 swap(students[j], students[j + 1]);
             }
@@ -98,3 +98,4 @@ void sortID(studType students[], int numStud) {
         cout << students[i].SID << endl;
     }
 }
+
