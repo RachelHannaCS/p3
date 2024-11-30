@@ -3,17 +3,16 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
-#include <algorithm>
 using namespace std;
 
 // global array 
 int array = 40;
 //prototype 
- int dropTest(studType students[], int numStud, int test1, int test2, int test3);
- int dropTest(studType students[], int numStud, int test1, int test2, int test3, int final);
- double getGrade();
- void outputScreen(studType students[], int numStud);
- void outputFile(studType students[], int numStud, ofstream& outFile);
+int dropTest(studType students[], int numStud, int test1, int test2, int test3);
+int dropTest(studType students[], int numStud, int test1, int test2, int test3, int final);
+double getGrade();
+void outputScreen(studType students[], int numStud);
+void outputFile(studType students[], int numStud, ofstream& fileOut);
 void sortName(studType students[], int numStud);
 void sortID(studType students[], int numStud);
 void menu(ofstream& outFile, studType students[], int numStud);
@@ -25,6 +24,7 @@ int main () {
     ifstream fileIn;
     ofstream fileOut;
     studType students[40];
+    fileOut.open("final_grades.txt");
 
     // try/cast for input file 
     try {
@@ -71,7 +71,7 @@ int main () {
     return 0;
 }
 
-void menu(ofstream& outFile, studType students[], int numStud) {
+void menu(ofstream& fileOut, studType students[], int numStud) {
     int choice;
 	// switch statement
 while (true) {
@@ -84,8 +84,8 @@ while (true) {
 		string fileName;
 		cout << "Please enter the name of the data file: " << endl;
 		cin >> fileName;
-		outFile.open(fileName);
-		if(!outFile) {
+		fileOut.open(fileName);
+		if(!fileOut) {
 		    cout << "Error opening file!" << endl;
 		    }
 		}
@@ -104,12 +104,12 @@ while (true) {
 		break;
 	case 5:
 		// output to file
-		outputFile(students, numStud, outFile);
+		outputFile(students, numStud, fileOut);
 		break;
 	case 6:
 		// quit
 		cout << "Exiting program..." << endl;
-		outFile.close();
+		fileOut.close();
 		return;
 	default:
 		cout << "Please enter menu choice: ";
@@ -120,3 +120,4 @@ while (true) {
 }
 
 }
+
