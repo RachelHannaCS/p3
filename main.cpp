@@ -35,7 +35,7 @@ int main () {
 	getline(fileIn, header);
 	fileOut << "Student               T1     T2     T3  Final   Drop  Total  SID     Grade" << endl;
 	// record detail
-	
+	// dropTest overload 
 	for (int i = 0; i < 40; i++) {
 			if (students[i].Course == "CS115") {
 		  cout << students[i].dropTest(students[i].Test1, students[i].Test2, students[i].Test3);
@@ -78,7 +78,7 @@ while (true) {
 		// enter name of output file 
 		{
 		string fileName;
-		cout << "Enter the name of the file: " << endl;
+		cout << "Please enter the name of the data file: " << endl;
 		cin >> fileName;
 		outFile.open(fileName);
 		if(!outFile) {
