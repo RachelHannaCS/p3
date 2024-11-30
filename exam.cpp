@@ -54,8 +54,8 @@ void outputFile(studType students[], int numStud, ofstream& fileOut) {
                 << left << setw(10) << students[i].Test1
                 << left << setw(10) << students[i].Test2 
                 << left << setw(10) << students[i].Test3 
-                << left << setw(10) << students[i].Final;
-            //  << left << setw(10) << DROP
+                << left << setw(10) << students[i].Final
+                << left << setw(10) << dropTest;
             //  << left << setw(10) << students[i].Total 
             //  << left << setw(10) << students[i].SID
             //  << left << setw(10) << GETGRADE
@@ -63,7 +63,13 @@ void outputFile(studType students[], int numStud, ofstream& fileOut) {
 }
 // outputScreen() function
 void outputScreen(studType students[], int numStud) {
-	// footer (calculate overall average each column + average + # stud)
+for (int i = 0; i < numStud - 1; i++) {
+	cout << left << setw(10) << students[i].Name << endl; 
+    cout << left << setw(10) << students[i].Test1;
+    cout << left << setw(10) << students[i].Test2;
+    cout << left << setw(10) << students[i].Test3; 
+    cout << left << setw(10) << students[i].Final;
+}
 }
 // sortName() function
 void sortName(studType students[], int numStud) {
@@ -83,6 +89,9 @@ void sortID(studType students[], int numStud) {
             if (students[j].getStudentID() > students[i + 1].getStudentID()) {
                 swap(students[j], students[j + 1]);
             }
+        }
+    }
+}
         }
     }
 }
