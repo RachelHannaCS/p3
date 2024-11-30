@@ -2,7 +2,7 @@
 using namespace std;
 
 // prototypes
-void dropTest(studType students[], int numStud);
+int dropTest(studType students[], int numStud, int test1, int test2, int test3, int final);
 void getGrade(int test1, int test2, int test3, int final);
 void outputFile(studType students[], int numStud, ofstream& fileOut);
 void outputScreen(studType students[], int numStud); // friend
@@ -11,32 +11,36 @@ void sortID(studType students[], int numStud);
 void menu(ofstream& outFile, studType students[], int numStud);
 
 // dropTest() function
-void dropTest(studType students[], int numStud) {
-	// function for dropTest() determine lowest score (overload)
-//	ofstream& operator< (ofstream&, const studType& students) {
-	    int counter = 0;
-	    int lowest = 100; 
-// 		// do if statement to check cs120 and cs115
-// 		if (students[i].course == "CS115") {
-// 		  // cs120, lowest of 4 tests (including final) dropped
-// 		  for (int i = 0; i < numStud; i++) {
-// 			if (students[i] < lowest) {
-// 				students[i] = lowest;
-// 			}
-// 		}
-// 		else if (students[i].course == "CS120") {
-// 		  // cs115, lowest of 3 tests (excluding final) dropped
-  
-// 		}
-// 		//for loop for the array of scores
-// 		for (int i = 0; i < numStud; i++) {
-// 			if (students[i] < lowest) {
-// 				students[i] = lowest;
-// 			}
-//		}
-//	}
+int studType::dropTest(int test1, int test2, int test3) {
+        int drop = 0;
+        if (test1 < test2 && test1 < test3) {
+            return test1;
+        }
+        else if (test2 < test1 && test2 < test3) {
+            return test2;
+        }
+        else if (test3 < test1 && test3 < test2) {
+            return test3;
+        }
+        return drop;
+	}
+	
+int studType::dropTest(int test1, int test2, int test3, int final) {
+        int drop = 0;
+        if (test1 < test2 && test1 < test3 && test1 < final) {
+            return test1;
+        }
+        else if (test2 < test1 && test2 < test3 && test2 < final) {
+            return test2;
+        }
+        else if (test3 < test1 && test3 < test2 && test3 < final) {
+            return test3;
+        }
+        else if (final < test1 && final < test2 && final < test3) {
+            return final;
+        }
+        return drop;
 }
-
 
 // getGrade() function
 void getGrade(studType students[], int numStud) {
@@ -81,39 +85,4 @@ void sortID(studType students[], int numStud) {
             }
         }
     }
-}
-// menu() function
-void menu(ofstream& outFile, studType students[], int numStud) {
-    int choice;
-	// switch statement
-while (true) {
-	switch(choice) {
-	case 1:
-		// enter name of output file
-		break;
-	case 2:
-		// sort by name (ascending A->Z)
-		sortName(students, numStud);
-		break;
-	case 3:
-		// sort by student ID (ascending)
-		sortID(students, numStud);
-		break;
-	case 4:
-		// output to screen
-		break;
-	case 5:
-		// output to file
-		break;
-	case 6:
-		// quit
-		break;
-	default:
-		cout << "Please enter menu choice: ";
-	    cin >> choice;
-	    break;
-	}
-
-}
-
 }
