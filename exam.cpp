@@ -54,8 +54,8 @@ void outputFile(studType students[], int numStud, ofstream& fileOut) {
                 << left << setw(10) << students[i].Test1
                 << left << setw(10) << students[i].Test2 
                 << left << setw(10) << students[i].Test3 
-                << left << setw(10) << students[i].Final
-                << left << setw(10) << dropTest;
+                << left << setw(10) << students[i].Final;
+            //  << left << setw(10) << DROP
             //  << left << setw(10) << students[i].Total 
             //  << left << setw(10) << students[i].SID
             //  << left << setw(10) << GETGRADE
@@ -63,13 +63,13 @@ void outputFile(studType students[], int numStud, ofstream& fileOut) {
 }
 // outputScreen() function
 void outputScreen(studType students[], int numStud) {
-for (int i = 0; i < numStud - 1; i++) {
-	cout << left << setw(10) << students[i].Name << endl; 
+    for (int i = 0; i < numStud; i++) {
+	cout << left << setw(10) << students[i].Name; 
     cout << left << setw(10) << students[i].Test1;
     cout << left << setw(10) << students[i].Test2;
     cout << left << setw(10) << students[i].Test3; 
     cout << left << setw(10) << students[i].Final;
-}
+    }
 }
 // sortName() function
 void sortName(studType students[], int numStud) {
@@ -78,10 +78,12 @@ void sortName(studType students[], int numStud) {
             studType temp;
             if(students[j].Name > students[j + 1].Name) {
                 swap(students[j], students[j + 1]);
+                cout << students[i].Name << endl;
             }
         }
     }
 }
+    
 // sortID() function
 void sortID(studType students[], int numStud) {
     for (int i = 0; i < numStud - 1; i++) {
@@ -91,7 +93,8 @@ void sortID(studType students[], int numStud) {
             }
         }
     }
-}
-        }
+    
+        for (int i = 0; i < numStud; i++) {
+        cout << students[i].SID << endl;
     }
 }
