@@ -3,7 +3,6 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-#include <algorithm>
 using namespace std;
 
 // studType base class 
@@ -22,7 +21,7 @@ class studType {
  int dropTest(int test1, int test2, int test3, int final);
 
   // set and get studentID 
-void setStudentID(int SID) {
+void setStudentID(string SID) {
     studentID = SID;
 }
 string getStudentID() {
